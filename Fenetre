@@ -1,0 +1,63 @@
+package fibo;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+
+public class Fenetre extends JFrame{
+	private JTextField field1;
+	private JLabel label;
+	
+	public Fenetre(){
+		super();
+		
+		build();
+	}
+	
+	private void build(){
+		setTitle("Suite de Fibonacci");
+		setSize(400,200);
+		setLocationRelativeTo(null); 
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setContentPane(buildContentPane());
+	}
+
+	private JPanel buildContentPane(){
+		JPanel panel = new JPanel();
+		panel.setLayout(new FlowLayout());
+		panel.setBackground(Color.white);
+		
+		field1 = new JTextField();
+		field1.setColumns(15);
+		
+		panel.add(field1);
+
+		
+
+		JButton bouton = new JButton(new Fibonacci(this, "Calculer"));
+		
+		panel.add(bouton);
+		
+		label = new JLabel("");
+		panel.add(label);
+		return panel;
+	}
+	
+
+	
+	public JTextField getField1(){
+		return field1;
+	}
+
+	
+	public JLabel getLabel(){
+		return label;
+	}
+}
