@@ -1,0 +1,51 @@
+package fibo;
+
+import java.awt.event.ActionEvent;
+
+import javax.swing.AbstractAction;
+
+public class Fibonacci extends AbstractAction{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	int resultat;
+	double max;
+	int n3;
+	
+	
+	private Fenetre fenetre;
+
+	
+	public Fibonacci(Fenetre f, String texte) {
+		super(texte);
+		this.fenetre = f;
+	}
+	
+	
+	
+	public void affichage() {
+		System.out.println(resultat);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		max = Double.parseDouble(fenetre.getField1().getText());
+		int n1 = 0;
+		int n2 = 1;
+		
+		System.out.println(max);
+		
+		for(int i=2; i<=max;i++) {
+			n3 = n1+n2;
+			
+			n1=n2;
+			n2=n3;
+		}
+		resultat=n3;
+		
+		fenetre.getLabel().setText("Le résultat vaut " + resultat);
+
+	}
+
+}
